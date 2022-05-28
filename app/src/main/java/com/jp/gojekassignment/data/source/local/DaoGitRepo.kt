@@ -8,5 +8,5 @@ import com.jp.gojekassignment.data.model.git.GitRepo
 @Dao
 interface DaoGitRepo:BaseDao<GitRepo> {
     @Query("select * from GitRepo")
-    fun getAllGitRepoLiveData():LiveData<GitRepo>
+    fun getAllGitRepoLiveData():LiveData<List<GitRepo>>
 }

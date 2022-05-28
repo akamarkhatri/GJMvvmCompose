@@ -10,7 +10,7 @@ interface BaseDao<T> {
     fun insert(t: T)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg t: T)
+    fun insert(list: List<T>)
 
     @Delete
     fun delete(t: T)

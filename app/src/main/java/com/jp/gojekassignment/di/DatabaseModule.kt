@@ -2,6 +2,7 @@ package com.jp.gojekassignment.di
 
 import android.content.Context
 import com.jp.gojekassignment.data.source.local.AppDatabase
+import com.jp.gojekassignment.data.source.local.DaoAppConfig
 import com.jp.gojekassignment.data.source.local.DaoGitRepo
 import dagger.Module
 import dagger.Provides
@@ -23,5 +24,10 @@ class DatabaseModule {
     @Provides
     fun provideDaoGitRepo(appDatabase: AppDatabase): DaoGitRepo {
         return appDatabase.daoGitRepo()
+    }
+
+    @Provides
+    fun providesDaoAppConfig(appDatabase: AppDatabase) : DaoAppConfig {
+        return appDatabase.daoAppConfig()
     }
 }

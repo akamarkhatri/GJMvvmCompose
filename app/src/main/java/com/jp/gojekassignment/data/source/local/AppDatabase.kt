@@ -6,10 +6,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.jp.gojekassignment.R
+import com.jp.gojekassignment.data.model.AppConfig
 import com.jp.gojekassignment.data.model.git.GitRepo
 
 
-@Database(entities = [GitRepo::class], version = 1)
+@Database(entities = [GitRepo::class, AppConfig::class], version = 1)
 @TypeConverters(RoomDataTypeConvertor::class)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
@@ -49,4 +50,5 @@ abstract class AppDatabase : RoomDatabase() {
         }
     }
     abstract fun daoGitRepo():DaoGitRepo
+    abstract fun daoAppConfig():DaoAppConfig
 }
