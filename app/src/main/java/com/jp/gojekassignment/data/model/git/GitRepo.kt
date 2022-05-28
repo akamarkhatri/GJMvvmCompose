@@ -7,15 +7,15 @@ import com.jp.gojekassignment.data.source.local.RoomDataTypeConvertor
 @Entity
 data class GitRepo(
     @PrimaryKey
-    var id: Int,
-    var name: String?,
+    val id: Int,
+    val name: String?,
     @SerializedName("full_name")
-    var fullName: String?,
+    val fullName: String?,
     @TypeConverters(RoomDataTypeConvertor::class)
-    var owner: RepoOwner,
-    var language: String?,
-    var forks: Int?,
-    var watchers: Int?
+    val owner: RepoOwner,
+    val language: String?,
+    val forks: Int?,
+    val watchers: Int?
 )
 
 data class RepoOwner(
