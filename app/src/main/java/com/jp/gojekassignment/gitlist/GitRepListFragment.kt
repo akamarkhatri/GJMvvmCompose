@@ -1,9 +1,7 @@
 package com.jp.gojekassignment.gitlist
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,14 +10,14 @@ import com.jp.gojekassignment.base.BaseFragment
 import com.jp.gojekassignment.base.ItemClickCallbk
 import com.jp.gojekassignment.data.TaskStatus
 import com.jp.gojekassignment.data.model.git.GitRepo
-import com.jp.gojekassignment.databinding.RepoListViewBinding
+import com.jp.gojekassignment.databinding.FragmentRepoListBinding
 import com.jp.gojekassignment.utils.isConnectedToNetwork
 import com.jp.gojekassignment.utils.showSnackbar
-import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.android.AndroidEntryPoint
 
-@HiltAndroidApp
+@AndroidEntryPoint
 class GitRepListFragment: BaseFragment() {
-    private lateinit var binding: RepoListViewBinding
+    private lateinit var binding: FragmentRepoListBinding
     private val gitRepoListViewModel: GitRepoListViewModel by viewModels()
     private val itemClickCallbk: ItemClickCallbk<GitRepo> by lazy {
         object : ItemClickCallbk<GitRepo> {
@@ -41,15 +39,18 @@ class GitRepListFragment: BaseFragment() {
     }
 
     override fun getFragmentView(
-        inflater: LayoutInflater?,
+        inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater?.inflate(
-            R.layout.repo_list_view,
-            container,
-            false
-        )
+    ): View {
+//        val binding = FragmentRepoListBinding.inflate(inflater, container, false)
+        binding = FragmentRepoListBinding.inflate(inflater, container, false)
+        setHasOptionsMenu(true)
+        return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_repository_list, menu)
     }
 
     override fun setUpView(view: View?, savedInstanceState: Bundle?) {

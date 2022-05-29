@@ -39,6 +39,7 @@ android {
     buildFeatures {
         compose true
         viewBinding true
+        dataBinding true
     }
     composeOptions {
         kotlinCompilerExtensionVersion rootProject.composeVersion
@@ -120,4 +121,8 @@ dependencies {
     /*paging*/
     implementation "androidx.paging:paging-runtime-ktx:$rootProject.pagingVersion"
     implementation "androidx.paging:paging-runtime:$rootProject.pagingVersion"
+
+    /*navigation*/
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
 }

@@ -21,6 +21,7 @@ buildscript {
         hiltVersion = '2.41'
         junitVersion = '4.13.2'
         materialVersion = '1.6.0'
+        navigationVersion = '2.4.2'
         kotlinVersion = '1.5.21'
         ktlintVersion = '0.40.0'
         ktxVersion = '1.7.0'

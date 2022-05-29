@@ -8,6 +8,10 @@ import androidx.room.TypeConverters
 import com.jp.gojekassignment.R
 import com.jp.gojekassignment.data.model.AppConfig
 import com.jp.gojekassignment.data.model.git.GitRepo
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 @Database(entities = [GitRepo::class, AppConfig::class], version = 1)
@@ -39,11 +43,16 @@ abstract class AppDatabase : RoomDatabase() {
                     appDatabase = Room.databaseBuilder(
                         context.applicationContext,
                         AppDatabase::class.java,
-                        context.getString(R.string.app_name)
-                    )
+                        context.getString(R.string.app_name))
                         .fallbackToDestructiveMigration()
                         .build()
                 }
+               /* GlobalScope.launch {
+                    if (appDatabase?.daoAppConfig()?.getAppConfig() == null) {
+                        appDatabase?.daoAppConfig()?.insert(AppConfig(repoLastUpdateTime = 0))
+                    }
+                }*/
+
                 return appDatabase!!
             }
 

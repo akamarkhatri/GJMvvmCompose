@@ -9,7 +9,7 @@ class RoomDataTypeConvertor {
     @TypeConverter
     fun convertRepoOwnerToString(repoOwner: RepoOwner?): String? {
         repoOwner?:return null
-        val type=object : TypeToken<ArrayList<RepoOwner>>(){}.type
+        val type=object : TypeToken<RepoOwner>(){}.type
         return Gson().toJson(repoOwner,type)
     }
 

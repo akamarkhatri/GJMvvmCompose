@@ -8,5 +8,5 @@ import com.jp.gojekassignment.BuildConfig
 data class AppConfig(
     @PrimaryKey
     val id: String = BuildConfig.APPLICATION_ID,
-    val repoLastUpdateTime: Long
+    var repoLastUpdateTime: Long = 0
 )
