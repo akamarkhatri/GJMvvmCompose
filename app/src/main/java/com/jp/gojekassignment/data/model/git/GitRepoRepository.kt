@@ -4,7 +4,7 @@ import android.text.format.DateUtils
 import androidx.lifecycle.LiveData
 import com.jp.gojekassignment.data.TaskId
 import com.jp.gojekassignment.data.TaskStatus
-import com.jp.gojekassignment.data.model.BaseRepository
+import com.jp.gojekassignment.base.BaseRepository
 import com.jp.gojekassignment.data.source.local.DaoAppConfig
 import com.jp.gojekassignment.data.source.local.DaoGitRepo
 import com.jp.gojekassignment.data.source.remote.GitRepoService
@@ -14,8 +14,9 @@ class GitRepoRepository @Inject constructor(
     private val daoGitRepo: DaoGitRepo,
     private val gitRepoService: GitRepoService,
     private val daoAppConfig: DaoAppConfig
-):BaseRepository() {
+): BaseRepository() {
     private val CACHE_EXPIRES_TIME=2* DateUtils.HOUR_IN_MILLIS
+
     fun getGitRepoListLivedata(): LiveData<List<GitRepo>> {
         return daoGitRepo.getAllGitRepoLiveData()
     }
@@ -28,10 +29,14 @@ class GitRepoRepository @Inject constructor(
                 return
             updateTaskStatus(TaskStatus.Loading(TaskId.FETCH_REPO))
         }
-        val repoList = gitRepoService.getRepo().await()
-        daoGitRepo.insert(repoList)
-        updateTaskStatus(TaskStatus.Loaded(TaskId.FETCH_REPO))
-        daoAppConfig.updateRepoLastUpdateTime(System.currentTimeMillis())
+        try {
+            val repoList = gitRepoService.getRepo().await()
+            daoGitRepo.insert(repoList)
+            updateTaskStatus(TaskStatus.Loaded(TaskId.FETCH_REPO))
+            daoAppConfig.updateRepoLastUpdateTime(System.currentTimeMillis())
+        } catch (e: Exception) {
+            updateTaskStatus(TaskStatus.Error(TaskId.FETCH_REPO, msg = e.message))
+        }
     }
 
     private fun canFetchRepoFromServer(): Boolean {

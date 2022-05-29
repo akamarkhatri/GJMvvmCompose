@@ -72,7 +72,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
 
-
+    /*compose*/
     implementation "androidx.compose.ui:ui:$rootProject.composeVersion"
     implementation "androidx.compose.foundation:foundation:$rootProject.composeVersion"
     implementation "androidx.compose.foundation:foundation-layout:$rootProject.composeVersion"
@@ -82,6 +82,16 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
     implementation 'androidx.activity:activity-compose:1.4.0'
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$rootProject.viewModelComposeVersion"
+
+    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation 'androidx.cardview:cardview:1.0.0'
 
     // Testing dependencies
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
@@ -94,4 +104,19 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$rootProject.composeVersion"
     testImplementation "junit:junit:$rootProject.junitVersion"
 
+    /*dimens/padding library*/
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
+    /*circular image view*/
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    /*Glide*/
+    implementation "com.github.bumptech.glide:glide:${rootProject.glideVersion}"
+
+    // Shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.4.0'
+
+    /*paging*/
+    implementation "androidx.paging:paging-runtime-ktx:$rootProject.pagingVersion"
+    implementation "androidx.paging:paging-runtime:$rootProject.pagingVersion"
 }

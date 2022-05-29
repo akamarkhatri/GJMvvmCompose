@@ -1,4 +1,4 @@
-package com.jp.gojekassignment.data.model
+package com.jp.gojekassignment.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
