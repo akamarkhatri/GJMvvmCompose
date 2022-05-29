@@ -1,19 +1,17 @@
 package com.jp.gojekassignment.gitlist
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.compose.ui.graphics.Color
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.jp.gojekassignment.R
 import com.jp.gojekassignment.base.BaseViewHolder
-import com.jp.gojekassignment.base.ItemClickCallbk
 import com.jp.gojekassignment.data.model.git.GitRepo
 import com.jp.gojekassignment.databinding.RepoListContentItemBinding
-import com.jp.gojekassignment.utils.changeDrawableColor
 import com.jp.gojekassignment.utils.loadThumbnailImage
 
-class RepoPagedListAdapter(private val itemClickCallbk: ItemClickCallbk<GitRepo>):
+class RepoPagedListAdapter(private val repoSelectedCallbk: RepoSelectedCallbk):
     PagedListAdapter<GitRepo, BaseViewHolder>(DIFF_CALLBACK) {
         companion object {
             private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<GitRepo>() {
@@ -35,22 +33,32 @@ class RepoPagedListAdapter(private val itemClickCallbk: ItemClickCallbk<GitRepo>
             repoName.text = gitRepo?.name ?: ""
             description.text = gitRepo?.description ?: ""
             repoAvator.loadThumbnailImage(gitRepo?.owner?.icon)
+            root.setOnClickListener {
+                gitRepo?.let { repoSelectedCallbk.onItemClick(position, gitRepo) }
+            }
             detailLayout.apply {
                 htmlUrl.text = gitRepo?.htmlUrl ?: ""
                 language.text = gitRepo?.language ?: ""
                 forks.text = gitRepo?.forks?.toString() ?: ""
                 stars.text = gitRepo?.watchers?.toString() ?: ""
-                val languageDrawableColor = if (gitRepo?.hasIssues == true) {
-                    Color.Red.value.toInt()
+
+                val languageLeftDrawable = if (gitRepo?.hasIssues == true) {
+                    R.drawable.circle_drawable_green
                 } else {
-                    Color.Green.value.toInt()
+                    R.drawable.circle_drawable_red
                 }
                 language.setCompoundDrawablesWithIntrinsicBounds(
-                    root.resources.changeDrawableColor(R.drawable.circle_drawable, languageDrawableColor),
-                    null,
-                    null,
-                    null
+                    languageLeftDrawable,
+                    0,
+                    0,
+                    0
                 )
+
+                root.visibility = if (repoSelectedCallbk.isPositionExpanded(position)) {
+                    View.VISIBLE
+                } else {
+                    View.GONE
+                }
             }
         }
     }

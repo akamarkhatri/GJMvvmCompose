@@ -19,15 +19,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class GitRepListFragment: BaseFragment() {
     private lateinit var binding: FragmentRepoListBinding
     private val gitRepoListViewModel: GitRepoListViewModel by viewModels()
-    private val itemClickCallbk: ItemClickCallbk<GitRepo> by lazy {
-        object : ItemClickCallbk<GitRepo> {
-            override fun onItemClick(position: Int, t: GitRepo) {
 
-            }
-        }
-    }
     private val repoPagedListAdapter by lazy {
-        RepoPagedListAdapter(itemClickCallbk)
+        RepoPagedListAdapter(gitRepoListViewModel)
     }
     private val internetErrorMsg by lazy {
         appCompatActivity.getString(R.string.msg_check_internet)
@@ -70,6 +64,15 @@ class GitRepListFragment: BaseFragment() {
         }
         binding.errorLayout.actionRetry.setOnClickListener {
             checkNetworkConnectionAndFetchContent()
+        }
+        gitRepoListViewModel.expandedPositionDetailLiveData.observe(this) {
+            it?:return@observe
+            it.prevPosition?.let {
+                repoPagedListAdapter.notifyItemChanged(it)
+            }
+            it.currentPosition?.let { 
+                repoPagedListAdapter.notifyItemChanged(it)
+            }
         }
     }
 

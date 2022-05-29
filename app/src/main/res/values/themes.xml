@@ -8,9 +8,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:textColor">@color/black</item>
-        <item name="colorOnSurface">@color/black</item>
-        <item name="colorSurface">@color/grey</item>
-        <item name="colorSecondary">@color/green_retry</item>
+        <item name="android:textColorSecondary">@color/black</item>
     </style>
 
     <style name="Theme.GoJekAssignment" parent="Base.Theme.GoJekAssignment"/>
@@ -23,9 +21,14 @@
         <item name="windowActionBarOverlay">true</item>
     </style>
 
-    <style name="Theme.GoJekAssignment.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar"/>
+    <style name="Theme.GoJekAssignment.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:textColorSecondary">@color/black</item>
+    </style>
 
     <style name="TextAppearance.GoJekAssignment.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
+
+    <style name="Theme.GoJekAssignment.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light"/>
 </resources>
