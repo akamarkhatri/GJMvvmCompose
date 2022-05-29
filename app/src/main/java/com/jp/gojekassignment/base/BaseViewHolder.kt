@@ -1,6 +1,6 @@
 package com.jp.gojekassignment.base
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBinding
 
-class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+class BaseViewHolder(val viewBinding: ViewBinding) : RecyclerView.ViewHolder(viewBinding.root)

@@ -1,68 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <com.google.android.material.button.MaterialButton
-            android:id="@+id/action_retry"
+        android:id="@+id/action_retry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_16sdp"
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/retry"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/green_retry"
+        android:textSize="@dimen/_15sdp"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="@dimen/_4sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:strokeColor="@color/green_retry"
+        app:strokeWidth="@dimen/_1sdp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/action_retry"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".6">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/err_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_margin="@dimen/_16sdp"
-            android:text="@string/retry"
-            app:backgroundTint="@color/white"
-            app:cornerRadius="@dimen/_4sdp"
-            app:strokeColor="@color/green_retry"
-            app:strokeWidth="@dimen/_1sdp"
-            android:textColor="@color/green_retry"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="@dimen/_15sdp"
-            android:padding="@dimen/_10sdp"
             android:gravity="center"
-    />
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp" android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias=".6"
-            app:layout_constraintBottom_toTopOf="@id/action_retry"
-    >
+            android:padding="@dimen/_5sdp"
+            android:text="@string/err_msg_no_internet_connection"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/grey"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
         <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/err_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/err_msg_no_internet_connection"
-                android:padding="@dimen/_5sdp"
-                android:textColor="@color/grey"
-                android:gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        />
-        <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/err_msg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/err_msg_something_went_wrong"
-                android:padding="@dimen/_5sdp"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textStyle="bold"
-                android:layout_marginBottom="@dimen/_8sdp"
-                app:layout_constraintBottom_toTopOf="@id/err_description"
-        />
+            android:id="@+id/err_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/err_msg_something_went_wrong"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/err_description" />
 
         <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/err_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/err_msg"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginBottom="@dimen/_18sdp"
-                app:srcCompat="@drawable/nointernet_connection"
-        />
+            android:id="@+id/err_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_18sdp"
+            app:layout_constraintBottom_toTopOf="@id/err_msg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:srcCompat="@drawable/nointernet_connection" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,7 @@
 package com.jp.gojekassignment.data.model.git
 
 import android.text.format.DateUtils
-import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import com.jp.gojekassignment.data.TaskId
 import com.jp.gojekassignment.data.TaskStatus
 import com.jp.gojekassignment.base.BaseRepository
@@ -17,8 +17,8 @@ class GitRepoRepository @Inject constructor(
 ): BaseRepository() {
     private val CACHE_EXPIRES_TIME=2* DateUtils.HOUR_IN_MILLIS
 
-    fun getGitRepoListLivedata(): LiveData<List<GitRepo>> {
-        return daoGitRepo.getAllGitRepoLiveData()
+    fun getGitRepoDataSource(): DataSource.Factory<Int, GitRepo> {
+       return daoGitRepo.getAllGitRepoDataSource()
     }
 
     suspend fun fetchRepo(isRefreshing: Boolean) {

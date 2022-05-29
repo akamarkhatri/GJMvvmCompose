@@ -15,7 +15,11 @@ data class GitRepo(
     val owner: RepoOwner,
     val language: String?,
     val forks: Int?,
-    val watchers: Int?
+    val watchers: Int?,
+    val hasIssues: Boolean?,
+    @SerializedName("html_url")
+    val htmlUrl: String?,
+    val description: String?
 )
 
 data class RepoOwner(

@@ -26,7 +26,7 @@ buildscript {
         ktxVersion = '1.7.0'
         lifecycleVersion = '2.4.1'
         okhttpLoggingVersion = '4.9.3'
-        pagingVersion = '3.1.1'
+        pagingVersion = '2.1.2'
         retrofitVersion = '2.9.0'
         roomVersion = '2.4.2'
         testExtJunit = '1.1.3'
