@@ -9,6 +9,7 @@ import com.jp.gojekassignment.base.BaseViewModel
 import com.jp.gojekassignment.data.model.git.GitRepo
 import com.jp.gojekassignment.data.model.git.GitRepoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,7 +29,7 @@ class GitRepoListViewModel @Inject internal  constructor(private val gitRepoRepo
         ).build()
     }
     fun fetchRepo(isRefreshing: Boolean = false){
-        viewModelScope.launch {
+        viewModelScope.launch (Dispatchers.IO){
             gitRepoRepository.fetchRepo(isRefreshing)
         }
     }

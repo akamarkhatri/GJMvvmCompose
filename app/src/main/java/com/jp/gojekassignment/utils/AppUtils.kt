@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.util.Log
 import com.jp.gojekassignment.BuildConfig
+import com.jp.gojekassignment.idlingresources.EspressoIdlingResources
 
 
 private val LOG_TAG = "GOJeck->"
@@ -21,4 +22,12 @@ fun Context.isConnectedToNetwork(): Boolean {
     val activeNetworkInfo = connectivityManager.activeNetworkInfo
 
     return activeNetworkInfo?.isConnected ?: false
+}
+
+fun increamentIdling() {
+    EspressoIdlingResources.increment()
+}
+
+fun decreamentIdling() {
+    EspressoIdlingResources.decrement()
 }

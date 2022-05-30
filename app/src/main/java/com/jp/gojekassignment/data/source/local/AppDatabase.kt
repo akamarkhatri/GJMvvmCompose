@@ -47,12 +47,6 @@ abstract class AppDatabase : RoomDatabase() {
                         .fallbackToDestructiveMigration()
                         .build()
                 }
-               /* GlobalScope.launch {
-                    if (appDatabase?.daoAppConfig()?.getAppConfig() == null) {
-                        appDatabase?.daoAppConfig()?.insert(AppConfig(repoLastUpdateTime = 0))
-                    }
-                }*/
-
                 return appDatabase!!
             }
 

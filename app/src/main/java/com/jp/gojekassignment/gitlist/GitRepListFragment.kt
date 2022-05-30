@@ -7,9 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jp.gojekassignment.R
 import com.jp.gojekassignment.base.BaseFragment
-import com.jp.gojekassignment.base.ItemClickCallbk
 import com.jp.gojekassignment.data.TaskStatus
-import com.jp.gojekassignment.data.model.git.GitRepo
 import com.jp.gojekassignment.databinding.FragmentRepoListBinding
 import com.jp.gojekassignment.utils.isConnectedToNetwork
 import com.jp.gojekassignment.utils.showSnackbar
@@ -27,17 +25,11 @@ class GitRepListFragment: BaseFragment() {
         appCompatActivity.getString(R.string.msg_check_internet)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        gitRepoListViewModel.fetchRepo()
-    }
-
     override fun getFragmentView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        val binding = FragmentRepoListBinding.inflate(inflater, container, false)
         binding = FragmentRepoListBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         return binding.root
@@ -48,6 +40,7 @@ class GitRepListFragment: BaseFragment() {
     }
 
     override fun setUpView(view: View?, savedInstanceState: Bundle?) {
+        gitRepoListViewModel.fetchRepo()
         observeTaskStatusLivedata()
         binding.repoRecyclerView.apply {
             adapter = repoPagedListAdapter
